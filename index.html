@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Tracker</title>
+    <link rel="shortcut icon"
+        href="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/github-brands-solid-full.svg"
+        type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="geist-font bg-gray-100 min-h-screen">
+    <header>
+        <nav>
+            <div class="navbar bg-white shadow-sm flex justify-between px-20">
+                <div class="flex items-center justify-center">
+                    <img class="w-9 h-9"
+                        src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/github-logo.png"
+                        alt="">
+                    <a class="btn btn-ghost text-xl" href="#">GitHub Issue Tracker</a>
+                </div>
+                <div class="flex gap-2">
+                    <div><label class="input">
+                            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                    stroke="currentColor">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.3-4.3"></path>
+                                </g>
+                            </svg>
+                            <input type="search" required placeholder="Search issues..." />
+                        </label></div>
+                    <div>
+                        <button class="btn 
+                            btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <main class="max-w-[1110px] mx-auto mt-15 ">
+        <section class="flex gap-2 bg-white py-2 px-6 rounded-md shadow-md mb-4">
+            <button class="btn border border-gray-300 bg-blue-700 text-white">All</button>
+            <button class="btn border border-gray-300 ">Open</button>
+            <button class="btn border border-gray-300">Closed</button>
+        </section>
+
+        <section class="flex justify-between items-center px-6 py-6 bg-white rounded-md shadow-md">
+            <div class=" flex justify-center items-center gap-2">
+                <img src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/Aperture.png"
+                    alt="Aperture" class=" border-8 border-purple-200 rounded-full bg-purple-200">
+
+                <div class="">
+                    <h2 class="text-2xl font-semibold"><span>50</span> Issues</h2>
+                    <p class="text-sm text-gray-400 ">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                    <span class="font-semibold">Open</span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-purple-500 rounded-full"></span>
+                    <span class="font-semibold">Closed</span>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
