@@ -53,11 +53,11 @@
         </nav>
 
     </header>
-    <main class="max-w-[1110px] mx-auto mt-15 px-2 shadow-lg">
+    <main class="max-w-[1400px] mx-auto mt-15 px-2 shadow-lg">
         <section class="flex gap-2 bg-white py-2 px-6 rounded-md shadow-md mb-4">
-            <button class="btn border border-gray-300 bg-blue-700 text-white">All</button>
-            <button class="btn border border-gray-300 ">Open</button>
-            <button class="btn border border-gray-300">Closed</button>
+            <button onclick=" toggleActiveButton('all-issues-btn')" id="all-issues-btn" class="btn border border-gray-300 bg-blue-700 text-white">All</button>
+            <button onclick=" toggleActiveButton('open-issues-btn')" id="open-issues-btn" class="btn border border-gray-300 ">Open</button>
+            <button onclick=" toggleActiveButton('closed-issues-btn')" id="closed-issues-btn" class="btn border border-gray-300">Closed</button>
         </section>
 
         <section class="flex justify-between items-center px-6 py-6 bg-white rounded-md shadow-md">
@@ -84,12 +84,12 @@
 
             </div>
         </section>
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 m-6">
-            <div
+        <section id="issues-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 m-6">
+            <!-- <div
                 class="p-4 flex flex-col gap-4 h-full bg-white rounded-md border-1 border-t-4 border-green-500 shadow-lg">
                 <div class="flex justify-between">
                     <div><img
-                            src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/Open-Status.png"
+                            src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/Closed-Status .png"
                             alt="">
                         
                     </div>
@@ -106,17 +106,17 @@
                     the navigation menu doesn't collapse properly on mobile devices..
                 </p>
                 <div class="flex gap-2">
-                    <div class="p-2 rounded-full  bg-red-200 text-red-500 flex items-center">
+                    <div class="p-2 rounded-full  bg-red-200 text-red-500 text-sm flex items-center">
                         <i class="fa-solid fa-bug"></i>
-                        <span class="ml-1">bug</span>
+                        <p class="ml-1">bug</p>
                     </div>
-                    <div class="p-2 rounded-full bg-yellow-200 text-yellow-600 ">
+                    <div class="p-2 rounded-full bg-yellow-200 text-yellow-600 text-sm flex items-center">
                         <i class="fa-solid fa-hand-holding-medical"></i>
-                        <span class="">help wanted</span>
+                        <p class="ml-1">help wanted</p>
                     </div>
-                    <div class="hidden">
+                    <div class=" p-2 rounded-full text-green-700 bg-green-200 flex items-center hidden">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        <span class="p-2 rounded-full text-green-700 bg-green-200 ">enhancement</span>
+                        <p class="ml-1">enhancement</p>
                     </div>
                 </div>
                 <hr>
@@ -124,9 +124,11 @@
                     <p>#1s by <span>John Doe</span></p>
                     <p>1/15/2024</p>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
+
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
