@@ -26,7 +26,7 @@
 <body class="geist-font bg-gray-100 min-h-screen">
     <header>
         <nav>
-            <div class="navbar bg-white shadow-sm flex justify-between px-20">
+            <div class="navbar bg-white flex shadow-sm  justify-between px-20 flex-col gap-4 py-4 md:flex-row">
                 <div class="flex items-center justify-center">
                     <img class="w-9 h-9"
                         src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/github-logo.png"
@@ -53,7 +53,7 @@
         </nav>
 
     </header>
-    <main class="max-w-[1110px] mx-auto mt-15 ">
+    <main class="max-w-[1110px] mx-auto mt-15 px-2 shadow-lg">
         <section class="flex gap-2 bg-white py-2 px-6 rounded-md shadow-md mb-4">
             <button class="btn border border-gray-300 bg-blue-700 text-white">All</button>
             <button class="btn border border-gray-300 ">Open</button>
@@ -82,6 +82,48 @@
                     <span class="font-semibold">Closed</span>
                 </div>
 
+            </div>
+        </section>
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 m-6">
+            <div
+                class="p-4 flex flex-col gap-4 h-full bg-white rounded-md border-1 border-t-4 border-green-500 shadow-lg">
+                <div class="flex justify-between">
+                    <div><img
+                            src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/Open-Status.png"
+                            alt="">
+                        
+                    </div>
+                    <div>
+                        <h2 class="w-20 py-1 rounded-full text-red-600 bg-red-200 text-center text-sm">HIGH</h2>
+                        <h2 class="w-20 py-1 rounded-full  text-yellow-600 bg-yellow-200 text-center hidden text-sm">MEDIUM</h2>
+                        <h3 class="w-20 py-1 rounded-full text-gray-600 bg-gray-200 text-center hidden text-sm">LOW</h3>
+                    </div>
+                </div>
+                <h1 class="font-bold">
+                    Fix Navigation Menu ON Mobile Devices
+                </h1>
+                <p class="font-semibold text-sm text-gray-500">
+                    the navigation menu doesn't collapse properly on mobile devices..
+                </p>
+                <div class="flex gap-2">
+                    <div class="p-2 rounded-full  bg-red-200 text-red-500 flex items-center">
+                        <i class="fa-solid fa-bug"></i>
+                        <span class="ml-1">bug</span>
+                    </div>
+                    <div class="p-2 rounded-full bg-yellow-200 text-yellow-600 ">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                        <span class="">help wanted</span>
+                    </div>
+                    <div class="hidden">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span class="p-2 rounded-full text-green-700 bg-green-200 ">enhancement</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-gray-500 text-sm">
+                    <p>#1s by <span>John Doe</span></p>
+                    <p>1/15/2024</p>
+                </div>
             </div>
         </section>
     </main>
