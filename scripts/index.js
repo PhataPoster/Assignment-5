@@ -4,6 +4,7 @@ const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
 let allIssuesBtn = document.getElementById("all-issues-btn");
 let openIssuesBtn = document.getElementById("open-issues-btn");
 let closedIssuesBtn = document.getElementById("closed-issues-btn");
+toggleActiveButton("all-issues-btn");
 
 async function toggleActiveButton(id) {
     allIssuesBtn.classList.remove("bg-blue-700", "text-white");
@@ -12,21 +13,47 @@ async function toggleActiveButton(id) {
 
     const button = document.getElementById(id);
     button.classList.add("bg-blue-700", "text-white");
-    
-    
+
+
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.data);
-    showAllIssues(data.data);
+    // console.log(data.data);
+    const issues = data.data;
+
+    
+        if(id === "open-issues-btn") {
+            const openIssues = issues.filter(issue => issue.status === "open");
+            issuesLength = openIssues.length;
+            showIssuesLength(issuesLength);
+            console.log(openIssues);
+            showAllIssues(openIssues);
+        }
+        else if(id === "closed-issues-btn") {
+            const closedIssues = issues.filter(issue => issue.status === "closed");
+            issuesLength = closedIssues.length;
+            showIssuesLength(issuesLength);
+            console.log(closedIssues);
+            showAllIssues(closedIssues);
+        }
+        else{
+            issuesLength = issues.length;
+            showIssuesLength(issuesLength);
+            showAllIssues(issues);
+        }
+
+}
+
+function showIssuesLength(length) {
+    const issuesLength = document.getElementById("issues-length");
+    issuesLength.innerText = length;
+
 }
 
 
 
 
-
-
 function showAllIssues(issues) {
-    // console.log(issues);
+    console.log(issues);
     const issuesContainer = document.getElementById("issues-container");
     issuesContainer.innerHTML = "";
     issues.forEach((issue) => {
@@ -55,25 +82,25 @@ function showAllIssues(issues) {
                 <div class="p-2 rounded-full  bg-red-200 text-red-500 text-sm flex items-center">
                         <i class="fa-solid fa-bug"></i>
                         <p class="ml-1">bug</p>
-                    </div>`:""}
+                    </div>`: ""}
 
                 ${issue.labels.includes("help wanted") ? `
                 <div class="p-2 rounded-full bg-yellow-200 text-yellow-600 text-sm flex items-center">
                         <i class="fa-solid fa-hand-holding-medical"></i>
                         <p class="ml-1">help wanted</p>
-                    </div>`:""}
+                    </div>`: ""}
 
                 ${issue.labels.includes("documentation") ? `
                 <div class="p-2 rounded-full bg-gray-200 text-gray-600 text-sm flex items-center">
                         <i class="fa-solid fa-book"></i>
                         <p class="ml-1">documentation</p>
-                    </div>`:""}
+                    </div>`: ""}
                 
                 ${issue.labels.includes("enhancement") ? `
                 <div class="p-2 rounded-full bg-green-200 text-green-600 text-sm flex items-center">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                         <p class="ml-1">enhancement</p>
-                    </div>`:""}
+                    </div>`: ""}
                     
                 </div>
                 <hr>
