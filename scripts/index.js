@@ -45,6 +45,25 @@ async function toggleActiveButton(id) {
 
 }
 
+const searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input",async ()=>{
+    const searchText = searchInput.value.trim().toLowerCase();
+    // console.log(searchText);
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    const searchedIssues = data.data;
+    if(searchedIssues.length > 0) {
+        showAllIssues(searchedIssues);
+        showIssuesLength(searchedIssues.length);
+    }
+    else{
+        toggleActiveButton("all-issues-btn");
+    }
+})
+
+
+
 function showIssuesLength(length) {
     const issuesLength = document.getElementById("issues-length");
     issuesLength.innerText = length;
