@@ -55,9 +55,12 @@
     </header>
     <main class="max-w-[1300px] mx-auto mt-15 px-2 shadow-lg">
         <section class="flex gap-2 bg-white py-2 px-6 rounded-md shadow-md mb-4">
-            <button onclick=" toggleActiveButton('all-issues-btn')" id="all-issues-btn" class="btn border border-gray-300 bg-blue-700 text-white">All</button>
-            <button onclick=" toggleActiveButton('open-issues-btn')" id="open-issues-btn" class="btn border border-gray-300 ">Open</button>
-            <button onclick=" toggleActiveButton('closed-issues-btn')" id="closed-issues-btn" class="btn border border-gray-300">Closed</button>
+            <button onclick=" toggleActiveButton('all-issues-btn')" id="all-issues-btn"
+                class="btn border border-gray-300 bg-blue-700 text-white">All</button>
+            <button onclick=" toggleActiveButton('open-issues-btn')" id="open-issues-btn"
+                class="btn border border-gray-300 ">Open</button>
+            <button onclick=" toggleActiveButton('closed-issues-btn')" id="closed-issues-btn"
+                class="btn border border-gray-300">Closed</button>
         </section>
 
         <section class="flex justify-between items-center px-6 py-6 bg-white rounded-md shadow-md">
@@ -84,6 +87,29 @@
 
             </div>
         </section>
+
+        <!-- modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+        
+
+
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle  ">
+            <div  class="modal-box max-w-[600px] max-h-[440px]">
+                <div id="modal-details-container">
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-primary">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
         <section id="issues-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 m-6">
             <!-- <div
                 class="p-4 flex flex-col gap-4 h-full bg-white rounded-md border-1 border-t-4 border-green-500 shadow-lg">
