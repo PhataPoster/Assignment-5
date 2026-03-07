@@ -1,4 +1,9 @@
 let issues = [];
+
+if(!localStorage.getItem("user")){
+  window.location.href = "index.html";
+}
+
 const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
 
 let allIssuesBtn = document.getElementById("all-issues-btn");

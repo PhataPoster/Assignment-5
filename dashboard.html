@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Tracker</title>
+    <link rel="shortcut icon"
+        href="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/github-brands-solid-full.svg"
+        type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="geist-font bg-gray-100 min-h-screen">
+    <header>
+        <nav>
+            <div class="navbar bg-white flex shadow-sm  justify-between px-20 flex-col gap-4 py-4 md:flex-row">
+                <div class="flex items-center justify-center">
+                    <img class="w-9 h-9"
+                        src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/github-logo.png"
+                        alt="">
+                    <a class="btn btn-ghost text-xl" href="#">GitHub Issue Tracker</a>
+                </div>
+                <div class="flex gap-2">
+                    <div><label class="input">
+                            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                    stroke="currentColor">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.3-4.3"></path>
+                                </g>
+                            </svg>
+                            <input id="search-input" type="search" required placeholder="Search issues..." />
+                        </label></div>
+                    <div>
+                        <button class="btn 
+                            btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <main class="max-w-[1300px] mx-auto mt-15 px-2 shadow-lg">
+        <section class="flex gap-2 bg-white py-2 px-6 rounded-md shadow-md mb-4">
+            <button onclick=" toggleActiveButton('all-issues-btn')" id="all-issues-btn"
+                class="btn border border-gray-300 bg-blue-700 text-white">All</button>
+            <button onclick=" toggleActiveButton('open-issues-btn')" id="open-issues-btn"
+                class="btn border border-gray-300 ">Open</button>
+            <button onclick=" toggleActiveButton('closed-issues-btn')" id="closed-issues-btn"
+                class="btn border border-gray-300">Closed</button>
+        </section>
+
+        <section class="flex justify-between items-center px-6 py-6 bg-white rounded-md shadow-md">
+            <div class=" flex justify-center items-center gap-2">
+                <img src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/Aperture.png"
+                    alt="Aperture" class=" border-8 border-purple-200 rounded-full bg-purple-200">
+
+                <div class="">
+                    <h2 class="text-2xl font-semibold"><span id="issues-length">50</span> Issues</h2>
+                    <p class="text-sm text-gray-400 ">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                    <span class="font-semibold">Open</span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-purple-500 rounded-full"></span>
+                    <span class="font-semibold">Closed</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+        
+
+
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle  ">
+            <div  class="modal-box max-w-[600px] max-h-[440px]">
+                <div id="modal-details-container">
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-primary">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+        <section id="issues-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 m-6">
+            <!-- <div
+                class="p-4 flex flex-col gap-4 h-full bg-white rounded-md border-1 border-t-4 border-green-500 shadow-lg">
+                <div class="flex justify-between">
+                    <div><img
+                            src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/Closed-Status .png"
+                            alt="">
+                        
+                    </div>
+                    <div>
+                        <h2 class="w-20 py-1 rounded-full text-red-600 bg-red-200 text-center text-sm">HIGH</h2>
+                        <h2 class="w-20 py-1 rounded-full  text-yellow-600 bg-yellow-200 text-center hidden text-sm">MEDIUM</h2>
+                        <h3 class="w-20 py-1 rounded-full text-gray-600 bg-gray-200 text-center hidden text-sm">LOW</h3>
+                    </div>
+                </div>
+                <h1 class="font-bold">
+                    Fix Navigation Menu ON Mobile Devices
+                </h1>
+                <p class="font-semibold text-sm text-gray-500">
+                    the navigation menu doesn't collapse properly on mobile devices..
+                </p>
+                <div class="flex gap-2">
+                    <div class="p-2 rounded-full  bg-red-200 text-red-500 text-sm flex items-center">
+                        <i class="fa-solid fa-bug"></i>
+                        <p class="ml-1">bug</p>
+                    </div>
+                    <div class="p-2 rounded-full bg-yellow-200 text-yellow-600 text-sm flex items-center">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                        <p class="ml-1">help wanted</p>
+                    </div>
+                    <div class=" p-2 rounded-full text-green-700 bg-green-200 flex items-center hidden">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <p class="ml-1">enhancement</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-gray-500 text-sm">
+                    <p>#1s by <span>John Doe</span></p>
+                    <p>1/15/2024</p>
+                </div>
+            </div> -->
+        </section>
+    </main>
+
+    <script src="./scripts/dashboard.js"></script>
+</body>
+
+</html>

@@ -5,8 +5,9 @@ signInBtn.addEventListener('click', function() {
     const passwordInput = document.getElementById('password');
 
     if (usernameInput.value === 'admin' && passwordInput.value === 'admin123') {
+        localStorage.setItem('user', usernameInput.value);
         // Redirect to the home page
-        window.location.href = 'index.html';
+        window.location.href = 'dashboard.html';
     }
     else {
         alert('Invalid credentials. Please try again.');
