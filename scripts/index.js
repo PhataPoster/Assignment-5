@@ -23,23 +23,25 @@ async function toggleActiveButton(id) {
     
         if(id === "open-issues-btn") {
             const openIssues = issues.filter(issue => issue.status === "open");
-            issuesLength = openIssues.length;
+            let issuesLength = openIssues.length;
             showIssuesLength(issuesLength);
             console.log(openIssues);
             showAllIssues(openIssues);
         }
         else if(id === "closed-issues-btn") {
             const closedIssues = issues.filter(issue => issue.status === "closed");
-            issuesLength = closedIssues.length;
+            let issuesLength = closedIssues.length;
             showIssuesLength(issuesLength);
             console.log(closedIssues);
             showAllIssues(closedIssues);
         }
         else{
-            issuesLength = issues.length;
+            let issuesLength = issues.length;
             showIssuesLength(issuesLength);
             showAllIssues(issues);
         }
+
+
 
 }
 
@@ -58,11 +60,11 @@ function showAllIssues(issues) {
     issuesContainer.innerHTML = "";
     issues.forEach((issue) => {
         // console.log(issue);
-
+        
         const div = document.createElement("div");
         div.innerHTML = `
             <div
-                class="p-4 flex flex-col gap-4 h-full bg-white rounded-md border-1 border-t-4 border-green-500 shadow-lg">
+                class="issues-card p-4 flex flex-col gap-4 h-full bg-white rounded-md border-1 border-t-4 ${issue.status === "open" ? 'border-green-500' : 'border-purple-500'} shadow-lg">
                 <div class="flex justify-between">
                     <div>
                     ${issue.status === "open" ? '<img src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/Open-Status.png" alt="Open">' : '<img src="./B13-A5-Github-Issue-Tracker-main/B13-A5-Github-Issue-Tracker-main/assets/Closed-Status .png" alt="Closed">'}
@@ -115,3 +117,4 @@ function showAllIssues(issues) {
         issuesContainer.appendChild(div);
     });
 }
+
