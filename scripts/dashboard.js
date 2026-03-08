@@ -6,10 +6,22 @@ if(!localStorage.getItem("user")){
 
 const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
 
+const autoCall = async()=>{
+    const res = await fetch(url);
+    const data = await res.json();
+    const issues = data.data;
+    let issuesLength = issues.length;
+    showIssuesLength(issuesLength);
+    showAllIssues(issues);
+    
+}
+autoCall();
+
+
 let allIssuesBtn = document.getElementById("all-issues-btn");
 let openIssuesBtn = document.getElementById("open-issues-btn");
 let closedIssuesBtn = document.getElementById("closed-issues-btn");
-toggleActiveButton("all-issues-btn");
+// toggleActiveButton("all-issues-btn");
 
 async function toggleActiveButton(id) {
     allIssuesBtn.classList.remove("bg-blue-700", "text-white");
@@ -18,13 +30,13 @@ async function toggleActiveButton(id) {
 
     const button = document.getElementById(id);
     button.classList.add("bg-blue-700", "text-white");
-
+    manageSpinner(true);
     const res = await fetch(url);
     const data = await res.json();
     // console.log(data.data);
     const issues = data.data;
 
-        manageSpinner(true);
+        
         if(id === "open-issues-btn") {
             const openIssues = issues.filter(issue => issue.status === "open");
             let issuesLength = openIssues.length;
@@ -48,6 +60,7 @@ async function toggleActiveButton(id) {
             showAllIssues(issues);
             manageSpinner(false);
         }
+        
 
 }
 
@@ -92,7 +105,7 @@ function showIssuesLength(length) {
 }
 
 const loadIssueDetails = async (id) => {
-    manageSpinner(true);
+    // manageSpinner(true);
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
 
     const res = await fetch(url);
@@ -101,7 +114,7 @@ const loadIssueDetails = async (id) => {
 
     displayIssueDetails(data.data);
 
-    manageSpinner(false);
+    // manageSpinner(false);
 
 }
 
