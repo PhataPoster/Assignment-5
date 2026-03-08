@@ -19,19 +19,19 @@ async function toggleActiveButton(id) {
     const button = document.getElementById(id);
     button.classList.add("bg-blue-700", "text-white");
 
-
     const res = await fetch(url);
     const data = await res.json();
     // console.log(data.data);
     const issues = data.data;
 
-    
+        manageSpinner(true);
         if(id === "open-issues-btn") {
             const openIssues = issues.filter(issue => issue.status === "open");
             let issuesLength = openIssues.length;
             showIssuesLength(issuesLength);
             console.log(openIssues);
             showAllIssues(openIssues);
+            manageSpinner(false);
         }
         else if(id === "closed-issues-btn") {
             const closedIssues = issues.filter(issue => issue.status === "closed");
@@ -39,14 +39,29 @@ async function toggleActiveButton(id) {
             showIssuesLength(issuesLength);
             console.log(closedIssues);
             showAllIssues(closedIssues);
+            manageSpinner(false);
         }
+        
         else{
             let issuesLength = issues.length;
             showIssuesLength(issuesLength);
             showAllIssues(issues);
+            manageSpinner(false);
         }
 
+}
 
+const manageSpinner = (status)=>{
+    const spinner = document.getElementById("spinner");
+    const issuesContainer = document.getElementById("issues-container");
+    if(status == true){
+        spinner.classList.remove("hidden");
+        issuesContainer.classList.add("hidden");
+    }
+    else{
+        spinner.classList.add("hidden");
+        issuesContainer.classList.remove("hidden");
+    }
 
 }
 
@@ -54,11 +69,12 @@ const searchInput = document.getElementById("search-input");
 searchInput.addEventListener("input",async ()=>{
     const searchText = searchInput.value.trim().toLowerCase();
     // console.log(searchText);
+    
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`;
     const res = await fetch(url);
     const data = await res.json();
     const searchedIssues = data.data;
-    if(searchedIssues.length > 0) {
+    if(searchText.length > 0 ) {
         showAllIssues(searchedIssues);
         showIssuesLength(searchedIssues.length);
     }
@@ -76,6 +92,7 @@ function showIssuesLength(length) {
 }
 
 const loadIssueDetails = async (id) => {
+    manageSpinner(true);
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
 
     const res = await fetch(url);
@@ -84,7 +101,7 @@ const loadIssueDetails = async (id) => {
 
     displayIssueDetails(data.data);
 
-
+    manageSpinner(false);
 
 }
 

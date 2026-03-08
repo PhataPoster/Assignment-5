@@ -53,7 +53,7 @@
         </nav>
 
     </header>
-    <main class="max-w-[1300px] mx-auto mt-15 px-2 shadow-lg">
+    <main class="max-w-[1300px] mx-auto mt-15 px-2 shadow-lg min-h-screen">
         <section class="flex gap-2 bg-white py-2 px-6 rounded-md shadow-md mb-4">
             <button onclick=" toggleActiveButton('all-issues-btn')" id="all-issues-btn"
                 class="btn border border-gray-300 bg-blue-700 text-white">All</button>
@@ -109,7 +109,9 @@
                 </div>
             </div>
         </dialog>
-
+        <section id="spinner" class="flex justify-center items-center mt-10 hidden">
+            <span class="loading loading-spinner loading-xl"></span>
+        </section>
         <section id="issues-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 m-6">
             <!-- <div
                 class="p-4 flex flex-col gap-4 h-full bg-white rounded-md border-1 border-t-4 border-green-500 shadow-lg">
