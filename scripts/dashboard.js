@@ -67,6 +67,7 @@ async function toggleActiveButton(id) {
 const manageSpinner = (status)=>{
     const spinner = document.getElementById("spinner");
     const issuesContainer = document.getElementById("issues-container");
+
     if(status == true){
         spinner.classList.remove("hidden");
         issuesContainer.classList.add("hidden");
@@ -87,13 +88,36 @@ searchInput.addEventListener("input",async ()=>{
     const res = await fetch(url);
     const data = await res.json();
     const searchedIssues = data.data;
+    const openIssues = searchedIssues.filter(issue => issue.status === "open");
+    const closedIssues = searchedIssues.filter(issue => issue.status === "closed");
+    
     if(searchText.length > 0 ) {
-        showAllIssues(searchedIssues);
-        showIssuesLength(searchedIssues.length);
+
+        if(openIssuesBtn.classList.contains("bg-blue-700")){
+            showAllIssues(openIssues);
+            showIssuesLength(openIssues.length);
+        }
+        else if(closedIssuesBtn.classList.contains("bg-blue-700")){
+            showAllIssues(closedIssues);
+            showIssuesLength(closedIssues.length);
+        }
+        else{
+            showAllIssues(searchedIssues);
+            showIssuesLength(searchedIssues.length);
+        }
     }
     else{
-        toggleActiveButton("all-issues-btn");
+        if(openIssuesBtn.classList.contains("bg-blue-700")){
+            toggleActiveButton("open-issues-btn");
+        }
+        else if(closedIssuesBtn.classList.contains("bg-blue-700")){
+            toggleActiveButton("closed-issues-btn");
+        }
+        else{
+            toggleActiveButton("all-issues-btn");
+        }
     }
+
 })
 
 
